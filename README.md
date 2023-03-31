@@ -4,10 +4,10 @@
 <p align="center">
     <a href="https://pkg.go.dev/github.com/highercomve/jsondiff"><img src="https://img.shields.io/static/v1?label=godev&message=reference&color=00add8&logo=go"></a>
     <a href="https://jsondiff.wi2l.pw"><img src="https://img.shields.io/badge/%E2%9A%BE-playground-orange.svg?style=flat"></a>
-    <a href="https://goreportcard.com/report/wI2L/jsondiff"><img src="https://goreportcard.com/badge/github.com/highercomve/jsondiff"></a>
+    <a href="https://goreportcard.com/report/highercomve/jsondiff"><img src="https://goreportcard.com/badge/github.com/highercomve/jsondiff"></a>
     <a href="https://github.com/highercomve/jsondiff/actions"><img src="https://github.com/highercomve/jsondiff/workflows/CI/badge.svg"></a>
-    <a href="https://codecov.io/gh/wI2L/jsondiff"><img src="https://codecov.io/gh/wI2L/jsondiff/branch/master/graph/badge.svg"/></a>
-    <a href="https://github.com/highercomve/jsondiff/releases"><img src="https://img.shields.io/github/v/tag/wI2L/jsondiff?color=blueviolet&label=version&sort=semver"></a>
+    <a href="https://codecov.io/gh/highercomve/jsondiff"><img src="https://codecov.io/gh/highercomve/jsondiff/branch/master/graph/badge.svg"/></a>
+    <a href="https://github.com/highercomve/jsondiff/releases"><img src="https://img.shields.io/github/v/tag/highercomve/jsondiff?color=blueviolet&label=version&sort=semver"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
     <a href="https://github.com/avelino/awesome-go"><img src="https://awesome.re/mentioned-badge.svg"></a>
 </p>
