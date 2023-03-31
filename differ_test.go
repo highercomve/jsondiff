@@ -52,7 +52,7 @@ func runCasesFromFile(t *testing.T, filename string, opts ...Option) {
 		t.Fatal(err)
 	}
 	var cases []testcase
-	if err := json.Unmarshal(b, &cases); err != nil {
+	if err := unmarshal(b, &cases); err != nil {
 		t.Fatal(err)
 	}
 	runTestCases(t, cases, opts...)

@@ -1,6 +1,9 @@
 package jsondiff
 
-import "encoding/json"
+import (
+	"bytes"
+	"encoding/json"
+)
 
 // Compare compares the JSON representations of the
 // given values and returns the differences relative
@@ -53,10 +56,10 @@ func compare(d *Differ, src, tgt interface{}) (Patch, error) {
 
 func compareJSON(d *Differ, src, tgt []byte) (Patch, error) {
 	var si, ti interface{}
-	if err := json.Unmarshal(src, &si); err != nil {
+	if err := unmarshal(src, &si); err != nil {
 		return nil, err
 	}
-	if err := json.Unmarshal(tgt, &ti); err != nil {
+	if err := unmarshal(tgt, &ti); err != nil {
 		return nil, err
 	}
 	d.targetBytes = tgt
@@ -73,8 +76,19 @@ func marshalUnmarshal(i interface{}) (interface{}, []byte, error) {
 		return nil, nil, err
 	}
 	var val interface{}
-	if err := json.Unmarshal(b, &val); err != nil {
+	if err := unmarshal(b, &val); err != nil {
 		return nil, nil, err
 	}
 	return val, b, nil
+}
+
+func unmarshal(data []byte, v interface{}) error {
+	decoder := json.NewDecoder(bytes.NewBuffer(data))
+	decoder.UseNumber()
+
+	if err := decoder.Decode(v); err != nil {
+		return err
+	}
+
+	return nil
 }

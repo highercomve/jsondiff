@@ -1,7 +1,6 @@
 package jsondiff
 
 import (
-	"encoding/json"
 	"io/ioutil"
 	"testing"
 )
@@ -38,11 +37,11 @@ func BenchmarkMedium(b *testing.B) {
 		{"all-options-unordered", makeopts(Factorize(), Rationalize(), Invertible(), Equivalent()), afterBytesUnordered},
 	} {
 		var before, after interface{}
-		err = json.Unmarshal(beforeBytes, &before)
+		err = unmarshal(beforeBytes, &before)
 		if err != nil {
 			b.Fatal(err)
 		}
-		err = json.Unmarshal(bb.afterBytes, &after)
+		err = unmarshal(bb.afterBytes, &after)
 		if err != nil {
 			b.Fatal(err)
 		}

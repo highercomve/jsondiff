@@ -13,7 +13,7 @@ func readJSON(filename string) (interface{}, error) {
 		return nil, err
 	}
 	var i interface{}
-	if err := json.Unmarshal(b, &i); err != nil {
+	if err := unmarshal(b, &i); err != nil {
 		return nil, err
 	}
 	return i, nil

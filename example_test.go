@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/wI2L/jsondiff"
+	"github.com/highercomve/jsondiff"
 )
 
 type (
@@ -125,7 +125,7 @@ func ExampleCompareJSON() {
 		log.Fatal(err)
 	}
 	var john Person
-	if err := json.Unmarshal(source, &john); err != nil {
+	if err := unmarshal(source, &john); err != nil {
 		log.Fatal(err)
 	}
 	john.Age = 30
