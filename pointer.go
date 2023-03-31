@@ -18,6 +18,12 @@ var (
 	// a JSON path, while also escaping any existing dot
 	// characters present in the original pointer.
 	dotPathReplacer = strings.NewReplacer(".", "\\.", "/", ".")
+
+	// rfc6901InverterReplacer is a replacer used to invert the escaped JSON
+	// pointer strings in compliance with the JavaScript
+	// Object Notation Pointer syntax.
+	// https://tools.ietf.org/html/rfc6901
+	rfc6901InverterReplacer = strings.NewReplacer("~0", "~", "~1", "/")
 )
 
 type jsonNode struct {
@@ -33,6 +39,14 @@ const emptyPtr = pointer("")
 // String implements the fmt.Stringer interface.
 func (p pointer) String() string {
 	return string(p)
+}
+
+func (p pointer) Name() string {
+	if len(p) > 0 {
+		return rfc6901InverterReplacer.Replace(string(p)[1:])
+	}
+
+	return "@this"
 }
 
 func (p pointer) toJSONPath() string {

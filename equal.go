@@ -1,6 +1,7 @@
 package jsondiff
 
 import (
+	"encoding/json"
 	"fmt"
 	"reflect"
 )
@@ -22,6 +23,8 @@ func typeSwitchKind(i interface{}) reflect.Kind {
 		return reflect.Bool
 	case float64:
 		return reflect.Float64
+	case json.Number:
+		return reflect.Struct
 	case nil:
 		return reflect.Ptr
 	case []interface{}:
@@ -52,6 +55,8 @@ func deepValueEqual(src, tgt interface{}, kind reflect.Kind) bool {
 		return src.(bool) == tgt.(bool)
 	case reflect.Float64:
 		return src.(float64) == tgt.(float64)
+	case reflect.Struct:
+		return src.(json.Number) == tgt.(json.Number)
 	case reflect.Slice:
 		oarr := src.([]interface{})
 		narr := tgt.([]interface{})

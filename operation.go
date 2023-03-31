@@ -32,6 +32,7 @@ type Patch []Operation
 // Operation represents a single RFC6902 JSON Patch operation.
 type Operation struct {
 	Type     string      `json:"op"`
+	Name     string      `json:"name"`
 	From     pointer     `json:"from,omitempty"`
 	Path     pointer     `json:"path"`
 	OldValue interface{} `json:"-"`
@@ -134,6 +135,7 @@ func (p *Patch) append(typ string, from, path pointer, src, tgt interface{}) Pat
 		Type:     typ,
 		From:     from,
 		Path:     path,
+		Name:     path.Name(),
 		OldValue: src,
 		Value:    tgt,
 	})
